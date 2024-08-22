@@ -1,0 +1,140 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet101",
+    "Model": [
+        {
+            "name": "resnetv18_stage3_conv62_fwd",
+            "id": 283,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_conv62_fwd",
+                    "ints": [
+                        378280352,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv62_weight",
+                    "ints": [
+                        98802176,
+                        2359296
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_relu40_fwd",
+                    "ints": [
+                        378079648,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        3,
+                        3
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                284
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_relu40_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_conv62_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256,
+                            256,
+                            3,
+                            3
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_conv62_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                282
+            ],
+            "fuse": 2
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            8,
+            1,
+            1
+        ],
+        "weight_tile": [
+            16,
+            8,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

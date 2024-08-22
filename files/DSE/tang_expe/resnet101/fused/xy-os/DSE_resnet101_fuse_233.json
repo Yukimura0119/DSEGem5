@@ -1,0 +1,335 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet101_fuse",
+    "Model": [
+        {
+            "name": "resnetv18_stage3_conv47_fwd",
+            "id": 233,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_conv47_fwd",
+                    "ints": [
+                        356202912,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv47_weight",
+                    "ints": [
+                        76371456,
+                        2359296
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_relu30_fwd",
+                    "ints": [
+                        356002208,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        3,
+                        3
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                234
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_relu30_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_conv47_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256,
+                            256,
+                            3,
+                            3
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_conv47_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                232
+            ],
+            "fuse": 3
+        },
+        {
+            "name": "resnetv18_stage3_batchnorm47_fwd",
+            "id": 234,
+            "op_type": "BatchNormalization",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_batchnorm47_fwd",
+                    "ints": [
+                        356403616,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_running_var",
+                    "ints": [
+                        78733824,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_running_mean",
+                    "ints": [
+                        78732800,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_beta",
+                    "ints": [
+                        78731776,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_gamma",
+                    "ints": [
+                        78730752,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv47_fwd",
+                    "ints": [
+                        356202912,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "epsilon",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "momentum",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "spatial",
+                    "ints": [],
+                    "type": 2
+                }
+            ],
+            "childs": [
+                235
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_conv47_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_gamma",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_beta",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_running_mean",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_running_var",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_batchnorm47_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                233
+            ],
+            "fuse": 0
+        },
+        {
+            "name": "resnetv18_stage3_relu31_fwd",
+            "id": 235,
+            "op_type": "Relu",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_relu31_fwd",
+                    "ints": [
+                        356604320,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm47_fwd",
+                    "ints": [
+                        356403616,
+                        200704
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                236
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_batchnorm47_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_relu31_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                234
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "output",
+    "Split": {
+        "input_tile": [
+            1,
+            1,
+            2,
+            1
+        ],
+        "weight_tile": [
+            1,
+            1,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

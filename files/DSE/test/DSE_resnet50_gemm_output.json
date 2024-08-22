@@ -1,0 +1,131 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet50",
+    "Model": [
+        {
+            "name": "resnetv17_dense0_fwd",
+            "id": 174,
+            "op_type": "Gemm",
+            "attribute": [
+                {
+                    "name": "resnetv17_dense0_fwd",
+                    "ints": [
+                        247039392,
+                        4000
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_dense0_bias",
+                    "ints": [
+                        103114240,
+                        4000
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_dense0_weight",
+                    "ints": [
+                        94922240,
+                        8192000
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "flatten_473",
+                    "ints": [
+                        247031200,
+                        8192
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "alpha",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "beta",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "transA",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "transB",
+                    "ints": [],
+                    "type": 2
+                }
+            ],
+            "childs": [],
+            "input_tensor": [
+                {
+                    "name": "flatten_473",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            2048
+                        ]
+                    }
+                },
+                [
+                    {
+                        "name": "resnetv17_dense0_weight",
+                        "type": {
+                            "elem_type": 1,
+                            "shape": [
+                                1000,
+                                2048
+                            ]
+                        }
+                    },
+                    {
+                        "name": "resnetv17_dense0_bias",
+                        "type": {
+                            "elem_type": 1,
+                            "shape": [
+                                1000
+                            ]
+                        }
+                    }
+                ]
+            ],
+            "output_tensor": {
+                "name": "resnetv17_dense0_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        1000
+                    ]
+                }
+            },
+            "parents": [
+                173
+            ]
+        }
+    ],
+    "Mapping": "output",
+    "Split": {
+        "input_tile": [
+            1,
+            1,
+            1,
+            1
+        ],
+        "weight_tile": [
+            4,
+            1,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 4,
+        "LocalMem": 128
+    }
+}

@@ -1,0 +1,9 @@
+cmake
+
+pydot
+
+ax-platform
+pygad
+deap
+numpy
+pandas

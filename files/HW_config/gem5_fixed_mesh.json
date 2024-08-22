@@ -1,0 +1,25 @@
+{    
+    "system":{
+        "type":"Mesh",
+        "clockRate":"1GHz",
+        "numTiles":1
+    },
+    "memory":{
+        "dramInterface":"SingleChannelDDR3_1600",
+        "size":"8GiB"
+    },
+    "noc":{
+        "width":16
+    },
+    "tile":{    
+        "pe": "PETile",
+        "pePerTile":16,
+        "cache":null,
+        "l1Size":"32KiB",
+        "l2Size":"256KiB",
+        "l1Assoc":8,
+        "l2Assoc":4,
+        "numCols":4,
+        "l2PerTile":4
+    }
+}

@@ -1,0 +1,335 @@
+{
+    "Layout": "NCHW",
+    "Name": "mobilenetv2_fuse",
+    "Model": [
+        {
+            "name": "mobilenetv20_features_linearbottleneck11_conv1_fwd",
+            "id": 100,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_conv1_fwd",
+                    "ints": [
+                        109541128,
+                        451584
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_conv1_weight",
+                    "ints": [
+                        2105600,
+                        20736
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_relu0_fwd",
+                    "ints": [
+                        109089544,
+                        451584
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        3,
+                        3
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                101
+            ],
+            "input_tensor": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_relu0_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            576,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_conv1_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            576,
+                            1,
+                            3,
+                            3
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "mobilenetv20_features_linearbottleneck11_conv1_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        576,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                99
+            ],
+            "fuse": 3
+        },
+        {
+            "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_fwd",
+            "id": 101,
+            "op_type": "BatchNormalization",
+            "attribute": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_fwd",
+                    "ints": [
+                        109992712,
+                        451584
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_running_var",
+                    "ints": [
+                        2133248,
+                        2304
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_running_mean",
+                    "ints": [
+                        2130944,
+                        2304
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_beta",
+                    "ints": [
+                        2128640,
+                        2304
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_gamma",
+                    "ints": [
+                        2126336,
+                        2304
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_conv1_fwd",
+                    "ints": [
+                        109541128,
+                        451584
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "epsilon",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "momentum",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "spatial",
+                    "ints": [],
+                    "type": 2
+                }
+            ],
+            "childs": [
+                102
+            ],
+            "input_tensor": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_conv1_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            576,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_gamma",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            576
+                        ]
+                    }
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_beta",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            576
+                        ]
+                    }
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_running_mean",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            576
+                        ]
+                    }
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_running_var",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            576
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        576,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                100
+            ],
+            "fuse": 0
+        },
+        {
+            "name": "mobilenetv20_features_linearbottleneck11_relu1_fwd",
+            "id": 102,
+            "op_type": "Relu",
+            "attribute": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_relu1_fwd",
+                    "ints": [
+                        110444296,
+                        451584
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_fwd",
+                    "ints": [
+                        109992712,
+                        451584
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                103
+            ],
+            "input_tensor": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck11_batchnorm1_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            576,
+                            14,
+                            14
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "mobilenetv20_features_linearbottleneck11_relu1_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        576,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                101
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "output",
+    "Split": {
+        "input_tile": [
+            1,
+            1,
+            2,
+            1
+        ],
+        "weight_tile": [
+            1,
+            1,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

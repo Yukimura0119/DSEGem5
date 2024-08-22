@@ -1,0 +1,76 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet101_fuse",
+    "Model": [
+        {
+            "name": "resnetv18_stage3_activation11",
+            "id": 199,
+            "op_type": "Relu",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_activation11",
+                    "ints": [
+                        341551520,
+                        802816
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3__plus11",
+                    "ints": [
+                        340748704,
+                        802816
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                200,
+                208
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3__plus11",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            1024,
+                            14,
+                            14
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_activation11",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        1024,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                198
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            16,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

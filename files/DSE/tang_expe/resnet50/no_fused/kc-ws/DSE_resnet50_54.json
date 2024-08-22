@@ -1,0 +1,157 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet50",
+    "Model": [
+        {
+            "name": "resnetv17_stage2_conv6_fwd",
+            "id": 54,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "resnetv17_stage2_conv6_fwd",
+                    "ints": [
+                        187413920,
+                        1605632
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_conv6_bias",
+                    "ints": [
+                        4168192,
+                        2048
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_conv6_weight",
+                    "ints": [
+                        3906048,
+                        262144
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_relu3_fwd",
+                    "ints": [
+                        187012512,
+                        401408
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                55
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv17_stage2_relu3_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            128,
+                            28,
+                            28
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv17_stage2_conv6_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            512,
+                            128,
+                            1,
+                            1
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv17_stage2_conv6_bias",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            512
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv17_stage2_conv6_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        512,
+                        28,
+                        28
+                    ]
+                }
+            },
+            "parents": [
+                53
+            ],
+            "fuse": 2
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            2,
+            1,
+            1
+        ],
+        "weight_tile": [
+            16,
+            2,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

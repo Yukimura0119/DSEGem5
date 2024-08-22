@@ -1,0 +1,213 @@
+{
+    "Layout": "NCHW",
+    "Name": "vgg16_fuse",
+    "Model": [
+        {
+            "name": "vgg0_conv8_fwd",
+            "id": 19,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "vgg0_conv8_fwd",
+                    "ints": [
+                        659201184,
+                        1605632
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "vgg0_conv8_bias",
+                    "ints": [
+                        21701888,
+                        2048
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "vgg0_conv8_weight",
+                    "ints": [
+                        12264704,
+                        9437184
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "vgg0_relu7_fwd",
+                    "ints": [
+                        657595552,
+                        1605632
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        3,
+                        3
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                20
+            ],
+            "input_tensor": [
+                {
+                    "name": "vgg0_relu7_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            512,
+                            28,
+                            28
+                        ]
+                    }
+                },
+                {
+                    "name": "vgg0_conv8_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            512,
+                            512,
+                            3,
+                            3
+                        ]
+                    }
+                },
+                {
+                    "name": "vgg0_conv8_bias",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            512
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "vgg0_conv8_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        512,
+                        28,
+                        28
+                    ]
+                }
+            },
+            "parents": [
+                18
+            ],
+            "fuse": 2
+        },
+        {
+            "name": "vgg0_relu8_fwd",
+            "id": 20,
+            "op_type": "Relu",
+            "attribute": [
+                {
+                    "name": "vgg0_relu8_fwd",
+                    "ints": [
+                        660806816,
+                        1605632
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "vgg0_conv8_fwd",
+                    "ints": [
+                        659201184,
+                        1605632
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                21
+            ],
+            "input_tensor": [
+                {
+                    "name": "vgg0_conv8_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            512,
+                            28,
+                            28
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "vgg0_relu8_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        512,
+                        28,
+                        28
+                    ]
+                }
+            },
+            "parents": [
+                19
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            4,
+            1,
+            1
+        ],
+        "weight_tile": [
+            16,
+            4,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

@@ -1,0 +1,16 @@
+{
+	"Stats":{
+		"finalTick":1000000000,
+		"l1dcaches.demandAvgMissLatency":107224.115010,
+		"l1dcaches.replacements":0,
+		"l1dcaches.blockedCycles":0,
+		"l1dcaches.ReadReq.hits.total":1672158,
+		"l1dcaches.ReadReq.miss.total":513,
+		"processor.numRetries":498,
+		"processor.retryTicks":3384471,
+		"processor.avgReadLatency":533.755453,
+		"processor.avgWriteLatency":"nan",
+		"processor.readBW":107050944000,
+		"processor.writeBW":0
+	}
+}

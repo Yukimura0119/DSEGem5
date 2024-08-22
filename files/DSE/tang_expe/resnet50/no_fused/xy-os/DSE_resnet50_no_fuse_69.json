@@ -1,0 +1,158 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet50_no_fuse",
+    "Model": [
+        {
+            "name": "resnetv17_stage2_batchnorm10_fwd",
+            "id": 69,
+            "op_type": "BatchNormalization",
+            "attribute": [
+                {
+                    "name": "resnetv17_stage2_batchnorm10_fwd",
+                    "ints": [
+                        203068832,
+                        401408
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_running_var",
+                    "ints": [
+                        5571584,
+                        512
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_running_mean",
+                    "ints": [
+                        5571072,
+                        512
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_beta",
+                    "ints": [
+                        5570560,
+                        512
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_gamma",
+                    "ints": [
+                        5570048,
+                        512
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv17_stage2_conv10_fwd",
+                    "ints": [
+                        202667424,
+                        401408
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "epsilon",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "momentum",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "spatial",
+                    "ints": [],
+                    "type": 2
+                }
+            ],
+            "childs": [
+                70
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv17_stage2_conv10_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            128,
+                            28,
+                            28
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_gamma",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            128
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_beta",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            128
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_running_mean",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            128
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv17_stage2_batchnorm10_running_var",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            128
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv17_stage2_batchnorm10_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        128,
+                        28,
+                        28
+                    ]
+                }
+            },
+            "parents": [
+                68
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "output",
+    "Split": {
+        "input_tile": [
+            1,
+            1,
+            7,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

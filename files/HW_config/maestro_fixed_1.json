@@ -1,0 +1,9 @@
+{
+    "system": {
+        "num_pes": 4,
+        "l1_size_cstr": 32,
+        "l2_size_cstr": 128,
+        "noc_bw_cstr": 32,
+        "offchip_bw_cstr": 64
+    }
+}

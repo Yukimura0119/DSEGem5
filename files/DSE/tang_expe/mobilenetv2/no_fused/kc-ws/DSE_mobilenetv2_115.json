@@ -1,0 +1,140 @@
+{
+    "Layout": "NCHW",
+    "Name": "mobilenetv2",
+    "Model": [
+        {
+            "name": "mobilenetv20_features_linearbottleneck13_conv0_fwd",
+            "id": 115,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck13_conv0_fwd",
+                    "ints": [
+                        114056968,
+                        451584
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck13_conv0_weight",
+                    "ints": [
+                        2841344,
+                        221184
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck12_elemwise_add0",
+                    "ints": [
+                        113981704,
+                        75264
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                116
+            ],
+            "input_tensor": [
+                {
+                    "name": "mobilenetv20_features_linearbottleneck12_elemwise_add0",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            96,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "mobilenetv20_features_linearbottleneck13_conv0_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            576,
+                            96,
+                            1,
+                            1
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "mobilenetv20_features_linearbottleneck13_conv0_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        576,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                114
+            ],
+            "fuse": 2
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            2,
+            1,
+            1
+        ],
+        "weight_tile": [
+            16,
+            2,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

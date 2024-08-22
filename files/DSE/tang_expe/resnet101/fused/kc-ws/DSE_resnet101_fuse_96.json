@@ -1,0 +1,296 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet101_fuse",
+    "Model": [
+        {
+            "name": "resnetv18_stage3_conv6_fwd",
+            "id": 96,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_conv6_fwd",
+                    "ints": [
+                        294988192,
+                        802816
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv6_bias",
+                    "ints": [
+                        16977408,
+                        4096
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv6_weight",
+                    "ints": [
+                        15928832,
+                        1048576
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_relu3_fwd",
+                    "ints": [
+                        294787488,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                97
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_relu3_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_conv6_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1024,
+                            256,
+                            1,
+                            1
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_conv6_bias",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1024
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_conv6_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        1024,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                95
+            ],
+            "fuse": 2
+        },
+        {
+            "name": "resnetv18_stage3_batchnorm6_fwd",
+            "id": 97,
+            "op_type": "BatchNormalization",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_batchnorm6_fwd",
+                    "ints": [
+                        295791008,
+                        802816
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_running_var",
+                    "ints": [
+                        16993792,
+                        4096
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_running_mean",
+                    "ints": [
+                        16989696,
+                        4096
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_beta",
+                    "ints": [
+                        16985600,
+                        4096
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_gamma",
+                    "ints": [
+                        16981504,
+                        4096
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv6_fwd",
+                    "ints": [
+                        294988192,
+                        802816
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "epsilon",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "momentum",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "spatial",
+                    "ints": [],
+                    "type": 2
+                }
+            ],
+            "childs": [
+                98
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_conv6_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            1024,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_gamma",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1024
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_beta",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1024
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_running_mean",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1024
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm6_running_var",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1024
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_batchnorm6_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        1024,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                96
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            128,
+            1,
+            1
+        ],
+        "weight_tile": [
+            16,
+            128,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

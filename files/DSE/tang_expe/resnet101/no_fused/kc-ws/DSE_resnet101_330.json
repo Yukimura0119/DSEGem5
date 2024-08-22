@@ -1,0 +1,96 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet101",
+    "Model": [
+        {
+            "name": "resnetv18_stage4__plus1",
+            "id": 330,
+            "op_type": "Add",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage4__plus1",
+                    "ints": [
+                        395340192,
+                        401408
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage4_activation0",
+                    "ints": [
+                        393533856,
+                        401408
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage4_batchnorm6_fwd",
+                    "ints": [
+                        394938784,
+                        401408
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                331
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage4_batchnorm6_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            2048,
+                            7,
+                            7
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage4_activation0",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            2048,
+                            7,
+                            7
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage4__plus1",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        2048,
+                        7,
+                        7
+                    ]
+                }
+            },
+            "parents": [
+                329,
+                321
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            2048,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}

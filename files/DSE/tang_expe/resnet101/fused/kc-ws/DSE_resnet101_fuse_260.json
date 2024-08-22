@@ -1,0 +1,352 @@
+{
+    "Layout": "NCHW",
+    "Name": "resnet101_fuse",
+    "Model": [
+        {
+            "name": "resnetv18_stage3_conv55_fwd",
+            "id": 260,
+            "op_type": "Conv",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_conv55_fwd",
+                    "ints": [
+                        368847264,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv55_bias",
+                    "ints": [
+                        89824768,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv55_weight",
+                    "ints": [
+                        88776192,
+                        1048576
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_activation17",
+                    "ints": [
+                        368044448,
+                        802816
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "dilations",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "group",
+                    "ints": [],
+                    "type": 2
+                },
+                {
+                    "name": "kernel_shape",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "pads",
+                    "ints": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "strides",
+                    "ints": [
+                        1,
+                        1
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                261
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_activation17",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            1024,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_conv55_weight",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256,
+                            1024,
+                            1,
+                            1
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_conv55_bias",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_conv55_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                259
+            ],
+            "fuse": 3
+        },
+        {
+            "name": "resnetv18_stage3_batchnorm55_fwd",
+            "id": 261,
+            "op_type": "BatchNormalization",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_batchnorm55_fwd",
+                    "ints": [
+                        369047968,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_running_var",
+                    "ints": [
+                        89828864,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_running_mean",
+                    "ints": [
+                        89827840,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_beta",
+                    "ints": [
+                        89826816,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_gamma",
+                    "ints": [
+                        89825792,
+                        1024
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_conv55_fwd",
+                    "ints": [
+                        368847264,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "epsilon",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "momentum",
+                    "ints": [],
+                    "type": 1
+                },
+                {
+                    "name": "spatial",
+                    "ints": [],
+                    "type": 2
+                }
+            ],
+            "childs": [
+                262
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_conv55_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_gamma",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_beta",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_running_mean",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_running_var",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            256
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_batchnorm55_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                260
+            ],
+            "fuse": 0
+        },
+        {
+            "name": "resnetv18_stage3_relu36_fwd",
+            "id": 262,
+            "op_type": "Relu",
+            "attribute": [
+                {
+                    "name": "resnetv18_stage3_relu36_fwd",
+                    "ints": [
+                        369248672,
+                        200704
+                    ],
+                    "type": 7
+                },
+                {
+                    "name": "resnetv18_stage3_batchnorm55_fwd",
+                    "ints": [
+                        369047968,
+                        200704
+                    ],
+                    "type": 7
+                }
+            ],
+            "childs": [
+                263
+            ],
+            "input_tensor": [
+                {
+                    "name": "resnetv18_stage3_batchnorm55_fwd",
+                    "type": {
+                        "elem_type": 1,
+                        "shape": [
+                            1,
+                            256,
+                            14,
+                            14
+                        ]
+                    }
+                }
+            ],
+            "output_tensor": {
+                "name": "resnetv18_stage3_relu36_fwd",
+                "type": {
+                    "elem_type": 1,
+                    "shape": [
+                        1,
+                        256,
+                        14,
+                        14
+                    ]
+                }
+            },
+            "parents": [
+                261
+            ],
+            "fuse": 0
+        }
+    ],
+    "Mapping": "weight",
+    "Split": {
+        "input_tile": [
+            1,
+            4,
+            1,
+            1
+        ],
+        "weight_tile": [
+            16,
+            4,
+            1,
+            1
+        ]
+    },
+    "HardwareInfo": {
+        "PE_Num": 16,
+        "LocalMem": 256
+    }
+}
