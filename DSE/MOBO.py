@@ -15,19 +15,21 @@ import matplotlib.pyplot as plt
 
 
 class MOBO(Algo):
-    def __init__(self, hw_design_space, cost_model, arch_type, dataflow, sw_file):
+    def __init__(self, hw_design_space, cost_model, arch_type, dataflow, sw_file, num_gen):
         super().__init__(hw_design_space, cost_model)
         self.ax_client = AxClient(verbose_logging=False)
         self.arch_type = arch_type
         self.dataflow = dataflow
         self.sw_file = sw_file
+        self.num_gen = num_gen
 
     def evaluate(self, parameters):
         print("HW Para:", parameters)
         parameters['tile.pePerTile'] = 4
         issuffix = re.search(r"\D", parameters['tile.l1Size'])
         latency, energy, mapping = co_sw_dse(sw_file=self.sw_file, hw_file="", cost_model=self.cost_model, dataflow=self.dataflow,
-                                             pe=parameters['tile.pePerTile'], local_mem=int(parameters['tile.l1Size'][:issuffix.start()]))
+                                             pe=parameters['tile.pePerTile'], local_mem=int(parameters['tile.l1Size'][:issuffix.start()]),
+                                             num_gen=self.num_gen)
 
         return {"Latency": latency, "Energy": energy}
 

@@ -1,21 +1,21 @@
 {
     "system": {
         "type": "Vanilla",
-        "clockRate": "16GHz",
+        "clockRate": "48GHz",
         "numTiles": 1
     },
     "memory": {
-        "dramInterface": "SingleChannelDDR4_2400",
+        "dramInterface": "SingleChannelLPDDR3_1600",
         "size": "4GiB"
     },
     "noc": {
-        "width": 1
+        "width": 29
     },
     "tile": {
         "pe": "PETile",
         "pePerTile": 16,
         "cache": "Lab447PrivateL1CacheHierarchy",
-        "l1Size": "2kB",
+        "l1Size": "16kB",
         "l2Size": null,
         "l1Assoc": null,
         "l2Assoc": null,

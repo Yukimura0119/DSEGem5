@@ -64,12 +64,12 @@
         "input_tile": [
             1,
             1,
-            32,
-            4
+            16,
+            8
         ]
     },
     "HardwareInfo": {
         "PE_Num": 16,
-        "LocalMem": 2
+        "LocalMem": 16
     }
 }

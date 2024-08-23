@@ -59,7 +59,7 @@ class NpEncoder(json.JSONEncoder):
             return obj.tolist()
         return super(NpEncoder, self).default(obj)
 
-def bo_dse(sw_file, hw_file, output, cost_model, dataflow):
+def bo_dse(sw_file, hw_file, output, cost_model, dataflow, num_gen):
     start = timeit.default_timer()
     if "vanilla" in hw_file:
         arch_type = "vanilla"
@@ -67,7 +67,7 @@ def bo_dse(sw_file, hw_file, output, cost_model, dataflow):
         arch_type = "mesh"
     hw = HWParser(hw_file, cost_model)
     hw_design_space = HWSpace(hw.parse_design_space())
-    x = MOBO(hw_design_space, cost_model, arch_type, dataflow, sw_file)
+    x = MOBO(hw_design_space, cost_model, arch_type, dataflow, sw_file, num_gen)
     x.run()
 
 def hw_dse(sw_file, hw_file, cost_model, output, dataflow, isCodesign=False, num_generation=1):
@@ -106,7 +106,7 @@ def hw_dse(sw_file, hw_file, cost_model, output, dataflow, isCodesign=False, num
             print("HW DSE Time:", end - start)
 
 
-def sw_dse(sw_file, hw_file, cost_model, output, dataflow, num_generation=1):
+def sw_dse(sw_file, hw_file, cost_model, output, dataflow, num_generation=10):
     if cost_model == "gem5":
         os.system(f"cp {hw_file} ./files/DSE_HW/DSE_hw.json")
     elif cost_model == "maestro":
@@ -215,14 +215,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if (args.optimize == 'SW'):
         sw_dse(sw_file=args.sw, hw_file=args.arch, cost_model=args.cost_model,
-               output=args.output, dataflow=args.dataflow)
+               output=args.output, dataflow=args.dataflow, num_generation=10)
     elif (args.optimize == 'HW'):
         hw_dse(sw_file=args.sw, hw_file=args.arch, cost_model=args.cost_model,
-               output=args.output, dataflow=args.dataflow, isCodesign=False)
+               output=args.output, dataflow=args.dataflow, isCodesign=False, num_generation=10)
     elif (args.optimize == 'CO'):
         if args.hw_algo == "BO":
             bo_dse(sw_file=args.sw, hw_file=args.arch, cost_model=args.cost_model,
-                   output=args.output, dataflow=args.dataflow)
+                   output=args.output, dataflow=args.dataflow, num_gen=10)
         else:
             hw_dse(sw_file=args.sw, hw_file=args.arch, cost_model=args.cost_model,
-                   output=args.output, dataflow=args.dataflow, isCodesign=True)
+                   output=args.output, dataflow=args.dataflow, isCodesign=True, num_gen=10)

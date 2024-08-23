@@ -16,13 +16,16 @@ import timeit
 import matplotlib.pyplot as plt
 
 
-def co_sw_dse(sw_file, hw_file, cost_model, dataflow, pe=4, local_mem=32):
+def co_sw_dse(sw_file, hw_file, cost_model, dataflow, pe=4, local_mem=32, dse_co_dir='dse_out/co_res', num_gen=10):
+    if not os.path.exists(dse_co_dir):
+        os.makedirs(dse_co_dir)
+    
     if hw_file != "":
         hw = HWParser(hw_file, cost_model)
         pe, local_mem = hw.getPE()
     pe = pe
     local_mem = local_mem
-    for gen in [1]:
+    for gen in [num_gen]:
         start = timeit.default_timer()
         sw = ONNXParser(sw_file)
         sw_design_space = SWSpace(sw.parse_design_space())
@@ -52,7 +55,7 @@ def co_sw_dse(sw_file, hw_file, cost_model, dataflow, pe=4, local_mem=32):
                         list(individual.fitness.values))
                     output_json.append(
                         {"Mapping": individual, "Latency": individual.fitness.values[0], "Energy": individual.fitness.values[1]})
-            with open(f"lipper_expe/expe1/SW_Co-design_{i}", "w") as fo:
+            with open(f"{dse_co_dir}/SW_Co-design_{i}.json", "w") as fo:
                 json.dump(output_json, fo, indent=4)
             # Choose the first of pareto set
             for j in range(1):
@@ -144,7 +147,7 @@ class HW_MOGA(HW_GA):
                 individual[i] = random.choice(self.gene_space[i])
         return individual,
 
-    def plotPareto(self, pareto_set, i):
+    def plotPareto(self, pareto_set, i, dse_co_dir='dse_out/co_res'):
 
         x_values = [np.log10(
             solution[0]) for solution in pareto_set if solution[0] < 1e16 and solution[1] < 1e16]
@@ -156,7 +159,7 @@ class HW_MOGA(HW_GA):
         plt.xlabel('Latency')
         plt.ylabel('Energy')
 
-        plt.savefig(f'./lipper_expe/expe1/png/pareto_front_{i}.png')
+        plt.savefig(f'{dse_co_dir}/png/pareto_front_{i}.png')
 
     def setup(self):
         creator.create("FitnessMulti", base.Fitness, weights=(-1.0, -1.0))
@@ -255,7 +258,7 @@ class SW_MOGA(SW_GA):
                 individual[i] = random.choice(self.gene_space[i])
         return individual,
 
-    def plotPareto(self, pareto_set, i):
+    def plotPareto(self, pareto_set, i, dse_co_dir):
 
         x_values = [np.log10(
             solution[0]) for solution in pareto_set if solution[0] < 1e16 and solution[1] < 1e16]
@@ -268,7 +271,7 @@ class SW_MOGA(SW_GA):
         plt.ylabel('Energy')
         plt.title('Pareto Front')
 
-        plt.savefig(f'./lipper_expe/expe1/png/pareto_front_{i}.png')
+        plt.savefig(f'{dse_co_dir}/png/pareto_front_{i}.png')
 
     def setup(self):
         creator.create("FitnessMulti", base.Fitness, weights=(-1.0, -1.0))
