@@ -5,3 +5,4 @@ top
 files/Traffic_Pattern/traffic_pattern.json
 gem5_simout
 models
+m5out

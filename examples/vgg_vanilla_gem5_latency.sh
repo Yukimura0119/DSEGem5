@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 python3 DSE/main.py \
     --sw onnx_parser/json/fuse/vgg16_fuse.json \
@@ -6,5 +6,5 @@ python3 DSE/main.py \
     --cost_model gem5 \
     --output dse_out \
     --dataflow shi \
-    --metrics both \
+    --metrics latency \
     --optimize SW

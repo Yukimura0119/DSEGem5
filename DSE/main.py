@@ -93,7 +93,7 @@ def hw_dse(sw_file, hw_file, cost_model, output, dataflow, isCodesign=False, num
             x = HW_MOGA(hw_design_space, cost_model, arch_type,
                         dataflow, isCodesign, sw_file)
             x.setup()
-            final_population = x.run(1, num_generations=num_generations, sol_per_pop=sol_per_pop)
+            final_population = x.run(1, num_generations=num_generations, num_parents_mating=10, sol_per_pop=sol_per_pop)
             pareto_fronts = tools.sortNondominated(
                 final_population, len(final_population))
             for j, front in enumerate(pareto_fronts, 1):

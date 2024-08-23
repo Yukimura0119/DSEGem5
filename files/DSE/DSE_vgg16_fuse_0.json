@@ -194,8 +194,8 @@
         "input_tile": [
             1,
             1,
-            8,
-            14
+            224,
+            224
         ],
         "weight_tile": [
             1,
@@ -205,7 +205,7 @@
         ]
     },
     "HardwareInfo": {
-        "PE_Num": 16,
-        "LocalMem": 32
+        "PE_Num": 4,
+        "LocalMem": 4
     }
 }

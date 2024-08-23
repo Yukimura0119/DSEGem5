@@ -18,7 +18,7 @@ def TrafficGeneratorAPI(dse_model):
 def Gem5SimulatorAPI():
     try:
         start = timeit.default_timer()
-        exit_code = os.system("./gem5/build/NULL_MESI_Two_Level/gem5.opt -re --outdir=gem5_simout ./gem5/configs/lab447/gem5_entry.py")
+        exit_code = os.system("./gem5/build/NULL_MESI_Two_Level/gem5.opt -re --outdir=gem5_simout --debug-flags PE ./gem5/configs/lab447/gem5_entry.py")
         assert exit_code == 0, "gem5 simulator failed"
         # assert os.path.exists("gem5/m5out/stats.txt"), "gem5 generate report error"
         assert os.path.exists("gem5_simout/stats.txt"), "gem5 generate report error"

@@ -1,25 +1,25 @@
-{    
-    "system":{
-        "type":"Vanilla",
-        "clockRate":"1GHz",
-        "numTiles":1 
+{
+    "system": {
+        "type": "Vanilla",
+        "clockRate": "16GHz",
+        "numTiles": 1
     },
-    "memory":{
-        "dramInterface":"SingleChannelDDR3_1600",
-        "size":"8GiB"
+    "memory": {
+        "dramInterface": "SingleChannelDDR4_2400",
+        "size": "4GiB"
     },
-    "noc":{
-        "width":16
+    "noc": {
+        "width": 1
     },
-    "tile":{    
+    "tile": {
         "pe": "PETile",
-        "pePerTile": 4,
-        "cache":"Lab447PrivateL1CacheHierarchy",
-        "l1Size": "4KiB",
+        "pePerTile": 16,
+        "cache": "Lab447PrivateL1CacheHierarchy",
+        "l1Size": "2kB",
         "l2Size": null,
-        "l1Assoc":null,
-        "l2Assoc":null,
-        "numCols":null,
-        "l2PerTile":null
+        "l1Assoc": null,
+        "l2Assoc": null,
+        "numCols": null,
+        "l2PerTile": null
     }
 }

@@ -6,7 +6,8 @@ import json
 import os
 
 absolute_path = os.path.dirname(os.path.abspath(__file__))
-filename = absolute_path + '/json/output_mesh.json'
+# filename = absolute_path + '/json/output_vanilla.json'
+filename = 'files/DSE_HW/DSE_hw.json'
 
 print(f'config file: {filename}')
 
