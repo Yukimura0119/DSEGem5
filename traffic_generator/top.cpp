@@ -467,7 +467,7 @@ int main(int argc, char *argv[])
     }
     // cout<<jsonArray.dump();
 
-    std::ofstream o("../files/Traffic_Pattern/traffic_pattern.json");
+    std::ofstream o("files/Traffic_Pattern/traffic_pattern.json");
     o << std::setw(4) << jsonArray << std::endl;
 
     // free memory ------------------------------------------

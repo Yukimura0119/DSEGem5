@@ -226,6 +226,8 @@ class SW_MOGA(SW_GA):
                 return penalty, penalty
             output_file_name = self.exportSWDesignPoint(split_tile)
             # call traffic generator
+            # import pdb
+            # pdb.set_trace()
             tg_ret_code, error_msg = TrafficGeneratorAPI(output_file_name)
             if tg_ret_code:
                 print(error_msg)

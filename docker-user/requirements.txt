@@ -7,3 +7,5 @@ pygad
 deap
 numpy
 pandas
+
+onnx
