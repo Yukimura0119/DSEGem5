@@ -4,4 +4,4 @@
 export image_name="dse_gem5"
 export image_tag="$USER"
 export container_name="${image_name}-${image_tag}"
-export HOST_MOUNT_POINT=~/Lab447-Simulator
+export HOST_MOUNT_POINT=~/dse_gem5
