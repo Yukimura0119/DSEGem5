@@ -94,7 +94,8 @@ class HW_MOGA(HW_GA):
             "Mapping": None, "Latency": 9223372036854775807, "Energy": 9223372036854775807}
 
     def fitness(self, individual):
-        penalty = 9223372036854775807
+        # penalty = 9223372036854775807
+        penalty = 1e16
         if self.cost_model == "maestro":
             pass
         elif self.cost_model == "gem5":
@@ -212,7 +213,8 @@ class SW_MOGA(SW_GA):
         self.toolbox = base.Toolbox()
 
     def fitness(self, individual):
-        penalty = 9223372036854775807
+        # penalty = 9223372036854775807
+        penalty = 1e16
         if self.cost_model == "maestro":
             self.wrapper.genMappingFile(self.layer_name, self.layer_type.upper(), self.pe,
                                         individual, self.design_space.getLayerDim(), self.dataflow)
@@ -229,8 +231,6 @@ class SW_MOGA(SW_GA):
                 return penalty, penalty
             output_file_name = self.exportSWDesignPoint(split_tile)
             # call traffic generator
-            # import pdb
-            # pdb.set_trace()
             tg_ret_code, error_msg = TrafficGeneratorAPI(output_file_name)
             if tg_ret_code:
                 print(error_msg)

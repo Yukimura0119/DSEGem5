@@ -194,7 +194,7 @@
         "input_tile": [
             1,
             1,
-            224,
+            8,
             224
         ],
         "weight_tile": [

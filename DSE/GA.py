@@ -42,7 +42,8 @@ class HW_GA(GA):
 
 
     def fitness(self, ga, solution, idx):
-        penalty = 9223372036854775807
+        # penalty = 9223372036854775807
+        penalty = 1e16
         if self.cost_model == "maestro":
             self.wrapper.genHWConfig(solution)
             self.best_sw_solution_set = self.sw_dse()
@@ -79,7 +80,7 @@ class HW_GA(GA):
                 print("Energy:", energy)
                 total_latency += latency
                 break
-            return int(total_latency)
+            return -int(total_latency)
    
 
     def encode(self, design_point):
@@ -216,7 +217,7 @@ class SW_GA(GA):
         return False
 
     def fitness(self, ga, solution, idx):
-        penalty = 9223372036854775807
+        penalty = 1e16
         
         if self.cost_model == "maestro":
             self.wrapper.genMappingFile(self.layer_name, self.layer_type.upper(), self.pe,
@@ -253,7 +254,7 @@ class SW_GA(GA):
                 print(error_msg)
                 return penalty
             print("Latency:", latency)
-            return int(latency)
+            return -int(latency)
 
     def encode(self, design_point):
         encoded_design_point = []
