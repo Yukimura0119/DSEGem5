@@ -1,33 +1,25 @@
 {
     "Layout": "NCHW",
-    "Name": "vgg16_fuse",
+    "Name": "mobilenetv2_no_fuse",
     "Model": [
         {
-            "name": "vgg0_conv0_fwd",
+            "name": "mobilenetv20_features_conv0_fwd",
             "id": 0,
             "op_type": "Conv",
             "attribute": [
                 {
-                    "name": "vgg0_conv0_fwd",
+                    "name": "mobilenetv20_features_conv0_fwd",
                     "ints": [
-                        554032288,
-                        12845056
+                        14758664,
+                        1605632
                     ],
                     "type": 7
                 },
                 {
-                    "name": "vgg0_conv0_bias",
-                    "ints": [
-                        609024,
-                        256
-                    ],
-                    "type": 7
-                },
-                {
-                    "name": "vgg0_conv0_weight",
+                    "name": "mobilenetv20_features_conv0_weight",
                     "ints": [
                         602112,
-                        6912
+                        3456
                     ],
                     "type": 7
                 },
@@ -73,8 +65,8 @@
                 {
                     "name": "strides",
                     "ints": [
-                        1,
-                        1
+                        2,
+                        2
                     ],
                     "type": 7
                 }
@@ -96,96 +88,31 @@
                     }
                 },
                 {
-                    "name": "vgg0_conv0_weight",
+                    "name": "mobilenetv20_features_conv0_weight",
                     "type": {
                         "elem_type": 1,
                         "shape": [
-                            64,
+                            32,
                             3,
                             3,
                             3
                         ]
                     }
-                },
-                {
-                    "name": "vgg0_conv0_bias",
-                    "type": {
-                        "elem_type": 1,
-                        "shape": [
-                            64
-                        ]
-                    }
                 }
             ],
             "output_tensor": {
-                "name": "vgg0_conv0_fwd",
+                "name": "mobilenetv20_features_conv0_fwd",
                 "type": {
                     "elem_type": 1,
                     "shape": [
                         1,
-                        64,
-                        224,
-                        224
+                        32,
+                        112,
+                        112
                     ]
                 }
             },
             "parents": [],
-            "fuse": 2
-        },
-        {
-            "name": "vgg0_relu0_fwd",
-            "id": 1,
-            "op_type": "Relu",
-            "attribute": [
-                {
-                    "name": "vgg0_relu0_fwd",
-                    "ints": [
-                        566877344,
-                        12845056
-                    ],
-                    "type": 7
-                },
-                {
-                    "name": "vgg0_conv0_fwd",
-                    "ints": [
-                        554032288,
-                        12845056
-                    ],
-                    "type": 7
-                }
-            ],
-            "childs": [
-                2
-            ],
-            "input_tensor": [
-                {
-                    "name": "vgg0_conv0_fwd",
-                    "type": {
-                        "elem_type": 1,
-                        "shape": [
-                            1,
-                            64,
-                            224,
-                            224
-                        ]
-                    }
-                }
-            ],
-            "output_tensor": {
-                "name": "vgg0_relu0_fwd",
-                "type": {
-                    "elem_type": 1,
-                    "shape": [
-                        1,
-                        64,
-                        224,
-                        224
-                    ]
-                }
-            },
-            "parents": [
-                0
-            ],
             "fuse": 0
         }
     ],
@@ -194,8 +121,8 @@
         "input_tile": [
             1,
             1,
-            224,
-            8
+            1,
+            32
         ],
         "weight_tile": [
             1,
