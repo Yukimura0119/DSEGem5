@@ -1,4 +1,4 @@
-# Lab447-Simulator
+# Design Space Exploration for Scalable DNN Accelerators 
 
 ## System architecture
 ![image info](img/whole-picture-v2.png)
